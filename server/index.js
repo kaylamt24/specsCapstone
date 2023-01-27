@@ -11,7 +11,7 @@ app = express()
 app.use(express.json())
 app.use(cors())
 
-const{createSavedItems, retrieveSavedItems} = require('./controllers/wishlistItems')
+const{createSavedItems, retrieveSavedItems, deleteSavedItems, retrieveDeletedItems} = require('./controllers/wishlistItems')
 
 const {register, login} = require('./controllers/authenticated')
 const {isAuthenticated} = require('./middleware/isAuthenticated')
@@ -22,18 +22,20 @@ app.post('/login', login)
 
 
 const {User} = require('./models/user')
-const {SavedItems} = require('./models/savedItems')
-const {DeletedItems} = require('./models/deletedItems')
+const {SavedItems, DeletedItems} = require('./models/savedItems')
 const { sequelize } = require ('./util/database')
 
 User.hasMany(SavedItems)
 User.hasMany(DeletedItems)
 SavedItems.belongsTo(User)
-DeletedItems.belongsTo(User)
+DeletedItems.belongsTo(SavedItems, {foreignKey: 'savedItemId', as: 'saved_items'})
 
 app.post('/savedItems', isAuthenticated, createSavedItems)
-app.get('/savedItems/:userId', retrieveSavedItems)
-app.get('/savedItems', isAuthenticated, retrieveSavedItems)
+app.get('/savedItems/:userId', isAuthenticated, retrieveSavedItems)
+app.delete('/savedItems/:userId/:itemId', isAuthenticated, deleteSavedItems)
+app.get('/deletedItems/:userId', retrieveDeletedItems)
+
+//need an app.get
 
 
 // app.listen(5000, () => console.log(`running on 5000`))

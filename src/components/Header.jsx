@@ -8,27 +8,7 @@ const Header = () => {
 
   return (
     <nav>
-      {authCtx.token ? (
-        <ul className="logged-in-navbar">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/form">Add A New Item</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile">Profile</NavLink>
-          </li>
-          <li>
-            <button
-              className="logout-btn"
-              onClick={() => {
-                authCtx.logout();
-              }}
-            >Logout</button>
-          </li>
-        </ul>
-      ) : (
+      {!authCtx.token ? (
         <ul className="logged-out-navbar">
           <li>
             <NavLink to="/">Home</NavLink>
@@ -40,9 +20,35 @@ const Header = () => {
             <NavLink to="/newuser">Sign Up</NavLink>
           </li>
         </ul>
+      ) : (
+        <ul className="logged-in-navbar">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/form">Add A New Item</NavLink>
+          </li>
+          <li>
+            <NavLink to="/deleted">Deleted Items</NavLink>
+          </li>
+          <li>
+            <button
+              className="logout-btn"
+              onClick={() => {
+                authCtx.logout();
+              }}
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
       )}
     </nav>
   );
 };
 
 export default Header;
+

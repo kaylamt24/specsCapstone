@@ -41,12 +41,14 @@ export const AuthContextProvider = (props) => {
     const localData = getLocalData()
 
     let initialToken
+    let initialId
     if(localData) {
         initialToken = localData.token
+        initialId = localData.userId
     }
-
+ 
     const [token, setToken] = useState(initialToken)
-    const [userId, setUserId] = useState(null)
+    const [userId, setUserId] = useState(initialId)
 
     const logout = useCallback(() => {
         setToken(null)

@@ -51,7 +51,8 @@ const ExistingUser = () => {
         />
 
         <input
-          type='password'
+          // type='password'
+          type="text"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

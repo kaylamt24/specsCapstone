@@ -1,7 +1,3 @@
-
-// YOU WILL BE INSTRUCTED WHEN YOU SHOULD 
-// UNCOMMENT THIS CODE
-
 import {useState, useContext} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
@@ -10,7 +6,7 @@ import AuthContext from '../store/authContext'
 
 
 const Form = () => {
-    const {token, userId} = useContext(AuthContext)
+    const {userId, token} = useContext(AuthContext)
     const navigate = useNavigate()
 
     const [item_url, setItem_Url] = useState('')
