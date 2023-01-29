@@ -8,6 +8,7 @@ const Header = () => {
 
   return (
     <nav>
+      
       {!authCtx.token ? (
         <ul className="logged-out-navbar">
           <li>

@@ -25,8 +25,6 @@ const Profile = () => {
   };
 
 
-
-
   const getSavedItems = useCallback(() => {
     if (userId)
       axios
@@ -52,13 +50,15 @@ const Profile = () => {
 
   const mappedSavedItems = getAllSavedItems.length ? (
     getAllSavedItems.map((savedItems) => {
-      console.log(getSavedItems);
+      console.log(getSavedItems, 'get Saved items');
+      
       return (
         <div key={savedItems.id} className="post-card">
-          <h2>{savedItems.item_url}</h2>
-          <h2>{savedItems.item_name}</h2>
-          <h2>{savedItems.item_picture}</h2>
-          <h2>{savedItems.item_price}</h2>
+          <h2>URL: {savedItems.item_url}</h2>
+          
+          <h2>NAME: {savedItems.item_name}</h2>
+          <h2>PICTURE: {savedItems.item_picture}</h2>
+          <h2>PRICE: {savedItems.item_price}</h2>
           <button onClick={() => moveToDeleted(savedItems.id)}>
             Delete Items
           </button>
@@ -69,7 +69,9 @@ const Profile = () => {
     <h2>You have no saved wishlist items</h2>
   );
 
-  return <>{[mappedSavedItems]}</>;
+  return <>{[mappedSavedItems]}
+    
+  </>;
 };
 
 export default Profile;

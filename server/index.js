@@ -11,7 +11,8 @@ app = express()
 app.use(express.json())
 app.use(cors())
 
-const{createSavedItems, retrieveSavedItems, deleteSavedItems, retrieveDeletedItems, run} = require('./controllers/wishlistItems')
+const{createSavedItems, retrieveSavedItems, deleteSavedItems, retrieveDeletedItems} = require('./controllers/wishlistItems')
+const {run} = require('./controllers/scraperThree')
 
 const {register, login} = require('./controllers/authenticated')
 const {isAuthenticated} = require('./middleware/isAuthenticated')
@@ -19,6 +20,7 @@ const {isAuthenticated} = require('./middleware/isAuthenticated')
 
 app.post('/register', register)
 app.post('/login', login)
+
 
 
 const {User} = require('./models/user')
@@ -34,7 +36,15 @@ app.post('/savedItems', isAuthenticated, createSavedItems)
 app.get('/savedItems/:userId', isAuthenticated, retrieveSavedItems)
 app.delete('/savedItems/:userId/:itemId', isAuthenticated, deleteSavedItems)
 app.get('/deletedItems/:userId', retrieveDeletedItems)
-app.get('./controllers/scraperThree', run)
+app.get('/scraperThree',(req, res) => {
+    let url = req.query.url;
+    run(url).then((data) => {
+        res.send(data)
+    }).catch((error) => {
+        res.send(error, 'error at get in index.js')
+    })
+})
+
 
 
 

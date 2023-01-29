@@ -6,37 +6,42 @@ async function run(url) {
     
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
-    await page.goto(url)
+    await page.goto(`${url}`)
 
 
     // THIS WORKS
     const imageElement = await page.$('#imgTagWrapperId')
-    const imageBox = await imageElement.boundingBox()
-    await page.screenshot({
-      path: 'exampleThree.png',
+    const bounding_box = await imageElement.boundingBox()
+    const screenshotBuffer = await page.screenshot({
+      // path: 'exampleThree.png',
+      // quality: 50,
+      encoding: 'binary',
       clip: {
-        x: imageBox.x,
-        y: imageBox.y,
-        width: imageBox.width,
-        height: imageBox.height
+        x: bounding_box.x,
+        y: bounding_box.y,
+        width: Math.min(bounding_box.width, page.viewport().width),
+        height: Math.min(bounding_box.height, page.viewport().height)
       }
     })
 
-    const title = await page.evaluate(() => document.title)
-    console.log(title)
+    const item_picture = Buffer.from(screenshotBuffer, 'binary').toString('base64')
 
-        const price = await page.evaluate(() => document.querySelector('#corePrice_feature_div').textContent)
-    console.log(price)
+    const item_name = await page.evaluate(() => document.title)
+    console.log(item_name)
+
+        const item_price = await page.evaluate(() => document.querySelector('#corePrice_desktop > div > table > tbody > tr > td.a-span12 > span.a-price.a-text-price.a-size-medium.apexPriceToPay > span.a-offscreen').textContent)
+    console.log(item_price)
 
     await browser.close();
+
+    return {item_picture, item_name, item_price}
 }
-run()
+// run()
 
 module.exports = {
 
     run
     
-      
    }
    
    

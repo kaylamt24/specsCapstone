@@ -13,7 +13,7 @@ module.exports = {
         },
         item_url:DataTypes.STRING(750),
         item_name: DataTypes.STRING,
-        item_picture: DataTypes.STRING,
+        item_picture: DataTypes.STRING(2000),
         item_price: DataTypes.FLOAT
     }),
 
@@ -26,7 +26,7 @@ module.exports = {
         },
         item_url:DataTypes.STRING(750),
         item_name: DataTypes.STRING,
-        item_picture: DataTypes.STRING,
+        item_picture: DataTypes.STRING(2000),
         item_price: DataTypes.FLOAT,
         savedItemId: {
             type: DataTypes.INTEGER,

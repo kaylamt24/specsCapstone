@@ -1,14 +1,16 @@
 require("dotenv").config();
 
 const { User } = require("../models/user");
-// const {DeletedItems} = require('../models/deletedItems')
+
 const { SavedItems, DeletedItems } = require("../models/savedItems");
 
 module.exports = {
   createSavedItems: async (req, res) => {
     try {
+      // const {item_url, userId} = req.body
       const { item_url, item_name, item_picture, item_price, userId } =
         req.body;
+
       await SavedItems.create({
         item_url,
         item_name,
@@ -55,11 +57,7 @@ module.exports = {
 
       const savedItems = await SavedItems.findOne({
         where: { userId: +userId, id: +itemId },
-        // include: [
-        //   {
-        //     model: DeletedItems,
-        //   },
-        // ],
+
     
       });
 
@@ -88,11 +86,7 @@ module.exports = {
 
       const deletedItems = await DeletedItems.findAll({
         where: { userId: +userId },
-        // include: [
-        //   {
-        //     model: DeletedItems,
-        //   },
-        // ],
+ 
       });
       res.status(200).send(deletedItems);
       console.log("showing all deleted items");
