@@ -11,7 +11,7 @@ app = express()
 app.use(express.json())
 app.use(cors())
 
-const{createSavedItems, retrieveSavedItems, deleteSavedItems, retrieveDeletedItems} = require('./controllers/wishlistItems')
+const{createSavedItems, retrieveSavedItems, deleteSavedItems, retrieveDeletedItems, run} = require('./controllers/wishlistItems')
 
 const {register, login} = require('./controllers/authenticated')
 const {isAuthenticated} = require('./middleware/isAuthenticated')
@@ -34,8 +34,8 @@ app.post('/savedItems', isAuthenticated, createSavedItems)
 app.get('/savedItems/:userId', isAuthenticated, retrieveSavedItems)
 app.delete('/savedItems/:userId/:itemId', isAuthenticated, deleteSavedItems)
 app.get('/deletedItems/:userId', retrieveDeletedItems)
+app.get('./controllers/scraperThree', run)
 
-//need an app.get
 
 
 // app.listen(5000, () => console.log(`running on 5000`))
