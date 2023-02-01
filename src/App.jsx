@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 import ExistingUser from "./components/ExistingUser";
 import NewUser from "./components/NewUser";
 import Deleted from "./components/Deleted";
-import Form from "./components/Form";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import Beauty from "./components/Beauty";
@@ -41,10 +40,7 @@ function App() {
             authCtx.token ? <Profile /> : <Navigate to="/existinguser" />
           }
         />
-        <Route
-          path="/form"
-          element={authCtx.token ? <Form /> : <Navigate to="/existinguser" />}
-        />
+
         <Route
           path="/deleted"
           element={

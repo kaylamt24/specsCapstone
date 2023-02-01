@@ -29,12 +29,7 @@ const Header = () => {
           <li>
             <NavLink to="/profile">Profile</NavLink>
           </li>
-          <li>
-            <NavLink to="/form">Add A New Item</NavLink>
-          </li>
-          <li>
-            <NavLink to="/deleted">Deleted Items</NavLink>
-          </li>
+
           <li>
             <NavLink to="/beauty ">Personal Care and Beauty</NavLink>
           </li>
@@ -46,6 +41,9 @@ const Header = () => {
           </li>
           <li>
             <NavLink to="/household ">Household Goods</NavLink>
+          </li>
+          <li>
+            <NavLink to="/deleted">Deleted Items</NavLink>
           </li>
           <li>
             <button

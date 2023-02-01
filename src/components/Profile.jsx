@@ -1,77 +1,143 @@
-// import { useContext, useEffect, useState, useCallback } from "react";
-// import axios from "axios";
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-// import AuthContext from "../store/authContext";
+import AuthContext from "../store/authContext";
 
 const Profile = () => {
-  // const { userId, token } = useContext(AuthContext);
-  // const [getAllSavedItems, setGetAllSavedItems] = useState([]);
+  const { userId, token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  // const moveToDeleted = (itemId) => {
-  //   console.log(userId);
-  //   axios
-  //     .delete(`savedItems/${userId}/${itemId}`, {
-  //       headers: {
-  //         authorization: token,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res, "MOVE TO DELETED");
+  const [item_url, setItem_Url] = useState("");
+  const [item_name, setItem_Name] = useState("");
+  const [item_picture, setItem_Picture] = useState("");
+  const [item_price, setItem_Price] = useState("");
+  const [scrapeData, setScrapeData] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  //       setGetAllSavedItems(
-  //         getAllSavedItems.filter((item) => item.id !== itemId)
-  //       );
-  //     });
-  // };
+  const category = ("Electronics", "Beauty", "Household", "Clothing");
+  const [categories, setCategories] = useState("");
 
-  // const getSavedItems = useCallback(() => {
-  //   if (userId)
-  //     axios
-  //       .get(`/savedItems/${userId}`, {
-  //         headers: {
-  //           authorization: token,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         console.log(res, "response at getSavedItems in profile");
-  //         setGetAllSavedItems(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  // }, [userId]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.get("/scraperThree", {
+        params: {
+          url: item_url,
+        },
+      });
 
-  // useEffect(() => {
-  //   getSavedItems();
-  // }, [userId, getSavedItems]);
-  // console.log(getAllSavedItems);
+      if (response.data && categories) {
+        console.log(response.data, "resp data");
+        setScrapeData(response.data);
+        setItem_Name(scrapeData.title);
+        setItem_Picture(scrapeData.screenshotBase64);
+        setItem_Price(scrapeData.price);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // const mappedSavedItems = getAllSavedItems.length ? (
-  //   getAllSavedItems.map((savedItems) => {
-  //     console.log(getSavedItems, "get Saved items");
-  //     return (
-  //       <div key={savedItems.id} className="post-card">
+  useEffect(() => {
+    if (scrapeData && categories) {
+      axios
+        .post(
+          "/savedItems",
+          {
+            item_url,
+            item_name: scrapeData.title,
+            item_picture: scrapeData.screenshotBase64,
+            item_price: scrapeData.price,
+            category: categories,
+            userId,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          setScrapeData(response.data);
+          console.log(response.data, "resp data ");
+          categories === "Electronics"
+            ? navigate("/electronics")
+            : categories === "Beauty"
+            ? navigate("/beauty")
+            : categories === 'Clothing'
+            ? navigate('/clothing')
+            : categories === 'Household'
+            ? navigate('/household')
+            : navigate("/profile")
+          //   navigate("/beauty");
+          //   if (category === "Beauty") {
+          //     navigate("/beauty");
+          //   } else if (category === "Electronics") {
+          //     navigate("/electronics");
+          //   } else {
+          //     navigate("/profile");
+          //   }
+        })
+        .catch((err) => console.log(err, "error at useEffect"));
+    }
+    console.log(scrapeData, "useEffect");
+  }, [scrapeData, categories]);
 
-  //         <li key={savedItems.id}>
-  //         <a href={savedItems.item_url} target="_blank" rel="noopener noreferrer">{savedItems.item_name}</a>
-  //       </li>
-  //         <h2>
-  //           PICTURE:
-  //           <img
-  //             src={`data:image/jpeg;base64,${savedItems.item_picture}`}
-  //             alt="Item"
-  //           />
-  //         </h2>
-  //         <h2>PRICE: {savedItems.item_price}</h2>
-  //         <button onClick={() => moveToDeleted(savedItems.id)}>
-  //           Delete Items
-  //         </button>
-  //       </div>
-  //     );
-  //   })
-  // ) : (
-  //   <h2>You have no saved wishlist items</h2>
-  // );
+  return (
+    <main>
+      <h1>PROFILE</h1>
+      <form className="form add-post-form" onSubmit={handleSubmit}>
+        <input
+          type="url"
+          id="url"
+          name="url"
+          placeholder="Insert URL here"
+          value={item_url}
+          onChange={(e) => setItem_Url(e.target.value)}
+          className="form-input add-post-input"
+        />
 
-  return <>PROFILE</>
+        <div className="flex-row status-container">
+          <div className="radio-btn">
+            <label>Personal Care and Beauty</label>
+            <input
+              type="radio"
+              value="Beauty"
+              checked={categories === "Beauty"}
+              onChange={(e) => setCategories(e.target.value)}
+            />
+            <label>Clothing, Shoes & Accessories</label>
+            <input
+              type="radio"
+              value="Clothing"
+              checked={categories === "Clothing"}
+              onChange={(e) => setCategories(e.target.value)}
+            />
+                        <label>Household Goods</label>
+                        <input
+              type="radio"
+              value="Household"
+              checked={categories === "Household"}
+              onChange={(e) => setCategories(e.target.value)}
+            />
+            <label>Electronics</label>
+            <input
+              type="radio"
+              value="Electronics"
+              checked={categories === "Electronics"}
+              onChange={(e) => setCategories(e.target.value)}
+            />
+          </div>
+        </div>
+        <button className="form-btn" disabled={loading}>
+          {loading ? "Loading..." : "Submit"}
+        </button>
+      </form>
+    </main>
+  );
 };
 
 export default Profile;
