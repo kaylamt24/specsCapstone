@@ -36,6 +36,18 @@ const Header = () => {
             <NavLink to="/deleted">Deleted Items</NavLink>
           </li>
           <li>
+            <NavLink to="/beauty ">Personal Care and Beauty</NavLink>
+          </li>
+          <li>
+            <NavLink to="/electronics ">Electronics</NavLink>
+          </li>
+          <li>
+            <NavLink to="/clothing ">Clothing, Shoes & Accessories</NavLink>
+          </li>
+          <li>
+            <NavLink to="/household ">Household Goods</NavLink>
+          </li>
+          <li>
             <button
               className="logout-btn"
               onClick={() => {

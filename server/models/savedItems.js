@@ -13,8 +13,9 @@ module.exports = {
         },
         item_url:DataTypes.STRING(750),
         item_name: DataTypes.STRING,
-        item_picture: DataTypes.STRING(2000),
-        item_price: DataTypes.FLOAT
+        item_price: DataTypes.STRING,
+        category: DataTypes.STRING,
+        item_picture: DataTypes.STRING(60000),
     }),
 
     DeletedItems: sequelize.define('deleted_items', {
@@ -26,14 +27,15 @@ module.exports = {
         },
         item_url:DataTypes.STRING(750),
         item_name: DataTypes.STRING,
-        item_picture: DataTypes.STRING(2000),
-        item_price: DataTypes.FLOAT,
+        item_price: DataTypes.STRING,
+        category: DataTypes.STRING,
         savedItemId: {
             type: DataTypes.INTEGER,
             references: {
                 model: this.SavedItems,
                 key: 'id'
             }
-        }
+        },
+        item_picture: DataTypes.STRING(60000),
     })
 }

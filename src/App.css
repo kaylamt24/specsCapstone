@@ -213,9 +213,9 @@ main {
 	justify-content: space-evenly;
 	align-items: center;
 	margin: 25px;
-	padding-top: 250px;
+	padding-top: 50px;
 	/* padding-bottom: 450px; */
-	margin-bottom: 450px;
+	margin-bottom: 150px;
 }
 
 .form-input {
@@ -269,7 +269,7 @@ main {
 
 .add-post-form {
 	width: 400px;
-	height: 500px;
+	height: 200px;
 }
 
 .status-container {
@@ -297,7 +297,7 @@ main {
 
 .post-card {
 	width: 500px;
-  height: 1000px;
+  height: 300px;
 	border: 1px solid #030303;
 	border-radius: 5px;
 	margin: 25px;

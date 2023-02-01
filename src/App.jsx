@@ -13,6 +13,10 @@ import Deleted from "./components/Deleted";
 import Form from "./components/Form";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+import Beauty from "./components/Beauty";
+import Electronics from "./components/Electronics";
+import Clothing from "./components/Clothing";
+import Household from "./components/Household";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -20,8 +24,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <Routes>
-      <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/existinguser"
           element={!authCtx.token ? <ExistingUser /> : <Navigate to="/" />}
@@ -32,7 +37,9 @@ function App() {
         />
         <Route
           path="/profile"
-          element={authCtx.token ? <Profile /> : <Navigate to="/existinguser" />}
+          element={
+            authCtx.token ? <Profile /> : <Navigate to="/existinguser" />
+          }
         />
         <Route
           path="/form"
@@ -40,8 +47,33 @@ function App() {
         />
         <Route
           path="/deleted"
-          element={authCtx.token ? <Deleted /> : <Navigate to="/existinguser" />}
+          element={
+            authCtx.token ? <Deleted /> : <Navigate to="/existinguser" />
+          }
         />
+        <Route
+          path="/beauty"
+          element={authCtx.token ? <Beauty /> : <Navigate to="/existinguser" />}
+        />
+        <Route
+          path="/electronics"
+          element={
+            authCtx.token ? <Electronics /> : <Navigate to="/existinguser" />
+          }
+        />
+                <Route
+          path="/clothing"
+          element={
+            authCtx.token ? <Clothing /> : <Navigate to="/existinguser" />
+          }
+        />
+                <Route
+          path="/household"
+          element={
+            authCtx.token ? <Household /> : <Navigate to="/existinguser" />
+          }
+        />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <Footer />

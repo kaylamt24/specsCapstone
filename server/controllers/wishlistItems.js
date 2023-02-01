@@ -4,12 +4,15 @@ const { User } = require("../models/user");
 
 const { SavedItems, DeletedItems } = require("../models/savedItems");
 
+// import Form from '../../src/components/Form'
+
 module.exports = {
   createSavedItems: async (req, res) => {
     try {
       // const {item_url, userId} = req.body
-      const { item_url, item_name, item_picture, item_price, userId } =
+      const { item_url, item_name, item_picture, item_price, userId, category } =
         req.body;
+        
 
       await SavedItems.create({
         item_url,
@@ -17,6 +20,7 @@ module.exports = {
         item_picture,
         item_price,
         userId,
+        category
       });
       console.log("new item added to wishlist");
 
@@ -67,6 +71,7 @@ module.exports = {
         item_picture: savedItems.item_picture,
         item_price: savedItems.item_price,
         userId: savedItems.userId,
+        category: savedItems.category,
       });
 
       await SavedItems.destroy({ where: { userId: +userId, id: +itemId } });

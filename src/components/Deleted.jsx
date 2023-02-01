@@ -1,5 +1,3 @@
-
-
 import {useContext, useEffect, useState, useCallback} from 'react'
 import axios from 'axios'
 
@@ -37,9 +35,16 @@ const Deleted = () => {
     console.log(getAllDeletedItems)
     return (
       <div key={deletedItems.id} className='post-card'>
-        <h2>{deletedItems.item_url}</h2>
-        <h2>{deletedItems.item_name}</h2>
-        <h2>{deletedItems.item_picture}</h2>
+          <li key={deletedItems.id}>
+          <a href={deletedItems.item_url} target="_blank" rel="noopener noreferrer">{deletedItems.item_name}</a>
+        </li>
+        <h2>
+            PICTURE:
+            <img
+              src={`data:image/jpeg;base64,${deletedItems.item_picture}`}
+              alt="Item"
+            />
+          </h2>
         <h2>{deletedItems.item_price}</h2>
     
       </div>
