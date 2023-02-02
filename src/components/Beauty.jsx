@@ -50,7 +50,7 @@ const Beauty = () => {
       
       return (
         <div key={savedItems.id} className="post-card">
-            <h3>{savedItems.category === 'Beauty' ? "Beauty" : 'Electronics'}</h3>
+            <h3>Health and Beauty</h3>
           <li key={savedItems.id}>
 
           <a href={savedItems.item_url} target="_blank" rel="noopener noreferrer">{savedItems.item_name}</a>

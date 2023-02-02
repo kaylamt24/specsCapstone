@@ -26,7 +26,7 @@ height: Math.min(bounding_box.height, page.viewport().height),
 }
 })
 const resizedBuffer = await sharp(screenshotBuffer)
-.resize(Math.round(110, 110))
+.resize(Math.round(112, 112))
 .toBuffer()
 
 const screenshotBase64 = Buffer.from(resizedBuffer, 'binary').toString('base64')

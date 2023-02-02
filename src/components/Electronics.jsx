@@ -56,7 +56,6 @@ const Electronics = () => {
           <a href={savedItems.item_url} target="_blank" rel="noopener noreferrer">{savedItems.item_name}</a>
         </li>
           <h2>
-            PICTURE:
             <img
               src={`data:image/jpeg;base64,${savedItems.item_picture}`}
               alt="Item"

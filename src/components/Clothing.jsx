@@ -50,13 +50,12 @@ const Clothing = () => {
       
       return (
         <div key={savedItems.id} className="post-card">
-            <h3>{savedItems.category === 'Clothing' ? "Clothing" : 'Uncategorized'}</h3>
+            <h3>Clothing, Shoes & Accessories</h3>
           <li key={savedItems.id}>
 
           <a href={savedItems.item_url} target="_blank" rel="noopener noreferrer">{savedItems.item_name}</a>
         </li>
           <h2>
-            PICTURE:
             <img
               src={`data:image/jpeg;base64,${savedItems.item_picture}`}
               alt="Item"
