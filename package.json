@@ -12,6 +12,11 @@
   },
   "private": true,
   "dependencies": {
+    "@headlessui/react": "^1.7.9",
+    "@headlessui/vue": "^1.7.9",
+    "@heroicons/react": "^2.0.14",
+    "@heroicons/vue": "^2.0.14",
+    "@material-tailwind/react": "^1.2.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -35,6 +40,7 @@
     "puppeteer-extra-plugin-stealth": "^2.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons-kit": "^2.0.0",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "sequelize": "^6.28.0",
@@ -66,6 +72,9 @@
     ]
   },
   "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^9.4.1",
+    "react-icons": "^4.7.1",
     "tailwindcss": "^3.2.4"
   }
 }

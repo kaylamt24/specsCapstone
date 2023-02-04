@@ -4,8 +4,8 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "./store/authContext";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
 
 import ExistingUser from "./components/ExistingUser";
 import NewUser from "./components/NewUser";
@@ -22,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-
+      {/* <Header /> */}
+      {/* <Home/> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -37,42 +37,41 @@ function App() {
         <Route
           path="/profile"
           element={
-            authCtx.token ? <Profile /> : <Navigate to="/existinguser" />
+            authCtx.token ? <Profile /> : <Navigate to="/" />
           }
         />
-
         <Route
           path="/deleted"
           element={
-            authCtx.token ? <Deleted /> : <Navigate to="/existinguser" />
+            authCtx.token ? <Deleted /> : <Navigate to="/" />
           }
         />
         <Route
           path="/beauty"
-          element={authCtx.token ? <Beauty /> : <Navigate to="/existinguser" />}
+          element={authCtx.token ? <Beauty /> : <Navigate to="/" />}
         />
         <Route
           path="/electronics"
           element={
-            authCtx.token ? <Electronics /> : <Navigate to="/existinguser" />
+            authCtx.token ? <Electronics /> : <Navigate to="/" />
           }
         />
-                <Route
+        <Route
           path="/clothing"
           element={
-            authCtx.token ? <Clothing /> : <Navigate to="/existinguser" />
+            authCtx.token ? <Clothing /> : <Navigate to="/" />
           }
         />
-                <Route
+        <Route
           path="/household"
           element={
-            authCtx.token ? <Household /> : <Navigate to="/existinguser" />
+            authCtx.token ? <Household /> : <Navigate to="/" />
           }
         />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

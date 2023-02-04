@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import AuthContext from "../store/authContext";
 
+import Header from "./Header";
+
+import { FaSearchengin } from "react-icons/fa";
+
 const Profile = () => {
+
+
   const { userId, token } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -67,19 +73,11 @@ const Profile = () => {
             ? navigate("/electronics")
             : categories === "Beauty"
             ? navigate("/beauty")
-            : categories === 'Clothing'
-            ? navigate('/clothing')
-            : categories === 'Household'
-            ? navigate('/household')
-            : navigate("/profile")
-          //   navigate("/beauty");
-          //   if (category === "Beauty") {
-          //     navigate("/beauty");
-          //   } else if (category === "Electronics") {
-          //     navigate("/electronics");
-          //   } else {
-          //     navigate("/profile");
-          //   }
+            : categories === "Clothing"
+            ? navigate("/clothing")
+            : categories === "Household"
+            ? navigate("/household")
+            : navigate("/profile");
         })
         .catch((err) => console.log(err, "error at useEffect"));
     }
@@ -87,9 +85,16 @@ const Profile = () => {
   }, [scrapeData, categories]);
 
   return (
+
     <main>
-      <h1>PROFILE</h1>
-      <form className="form add-post-form" onSubmit={handleSubmit}>
+      <Header/>
+ 
+
+
+
+
+
+      <form onSubmit={handleSubmit}>
         <input
           type="url"
           id="url"
@@ -97,11 +102,12 @@ const Profile = () => {
           placeholder="Insert URL here"
           value={item_url}
           onChange={(e) => setItem_Url(e.target.value)}
-          className="form-input add-post-input"
+          className="flex-col justify-center mt-96 w-96 border-4 mb-4 h-12 mr-4 ml-96 border-purple-900 text-2xl rounded-2xl text-center" 
         />
+        
 
-        <div className="flex-row status-container">
-          <div className="radio-btn">
+        <div>
+          <div className="flex-col justify-center mt- w-96 border-4 mb-4 h-12 mr-4 ml-96 border-purple-900 text-2xl rounded-2xl text-center">
             <label>Personal Care and Beauty</label>
             <input
               type="radio"
@@ -116,8 +122,8 @@ const Profile = () => {
               checked={categories === "Clothing"}
               onChange={(e) => setCategories(e.target.value)}
             />
-                        <label>Household Goods</label>
-                        <input
+            <label>Household Goods</label>
+            <input
               type="radio"
               value="Household"
               checked={categories === "Household"}
@@ -132,9 +138,12 @@ const Profile = () => {
             />
           </div>
         </div>
-        <button className="form-btn" disabled={loading}>
-          {loading ? "Loading..." : "Submit"}
-        </button>
+
+        <div className="grid grid-cols-1 place-items-center  border-purple-900 text-2xl">
+          <button disabled={loading}>
+            {loading ? "Loading..." : "Submit"}
+          </button>
+        </div>
       </form>
     </main>
   );
