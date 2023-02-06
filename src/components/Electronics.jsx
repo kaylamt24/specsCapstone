@@ -69,7 +69,7 @@ const Electronics = () => {
 
           <div className="grid mt-20 ml-36">{savedItems.item_price}</div>
 
-          <button className='grid h-10 w-36 mt-16 ml-20 bg-limegreen shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center' onClick={() => moveToDeleted(savedItems.id)}>
+          <button className='grid h-10 w-36 mt-16 ml-20 bg-navy text-limegreen shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center' onClick={() => moveToDeleted(savedItems.id)}>
             Delete Items
           </button>
         </div>

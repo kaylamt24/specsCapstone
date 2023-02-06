@@ -75,7 +75,7 @@ const ExistingUser = () => {
           </div>
 
           <button
-            className="h-12 w-48 ml-96 text-2xl text-center relative mx-auto rounded-lg overflow-hidden placeholder-black bg-limegreen shadow-[0px_7px_25px_navy]"
+            className="h-12 w-48 ml-96 text-2xl text-center relative mx-auto rounded-lg overflow-hidden placeholder-black shadow-[0px_7px_25px_navy] bg-limegreen"
             onClick={() => setLogin(!login)}
           >
             Log In

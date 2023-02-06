@@ -121,7 +121,7 @@ const Profile = () => {
       
   <Header/>
       <div className='grid grid-cols-2 bg-white h-full w-full mr-24'>
-        <div className="grid mt-6 ml-28 mb-4  shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-white relative mx-auto rounded-lg overflow-hidden">
+        <div className="grid mt-6 ml-28 mb-4 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-white relative mx-auto rounded-lg overflow-hidden">
       <form onSubmit={handleSubmit}>
         <input
           type="url"
@@ -130,10 +130,10 @@ const Profile = () => {
           placeholder="Paste it..."
           value={item_url}
           onChange={(e) => setItem_Url(e.target.value)}
-          className="grid w-96 mt-20 ml-20 h-14 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white " 
+          className="grid w-96 mt-20 ml-20 h-14 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black" 
         />
         
-          <div className="flex-col justify-center mt-6 w-96 mb-24 h-12 mr-20 ml-20 text-2xl rounded-xl text-center  bg-transparent">
+          <div className="flex-col justify-center mt-6 w-96 mb-24 h-12 mr-20 ml-20 text-2xl rounded-xl text-center">
             <div>
             <input className="mt-6 mb-4"
               type="radio"
@@ -179,10 +179,13 @@ const Profile = () => {
             </div>
           </div>
           
-          <button className="mt-20 w-52 h-12 ml-40 bg-limegreen shadow-[0px_7px_25px_navy] text-2xl rounded-l bg-transparent text-center items-center" >
+          <div className="mt-48 w-52 h-12 ml-40 shadow-[0px_7px_25px_navy] text-2xl rounded-l bg-transparent text-center items-center bg-navy text-limegreen">
+          <button className="mt-1">
             {loading ? "Loading..." : "Save it..."}
           </button>
-    
+          </div>
+
+
       </form>
       </div>
       <span className='grid mt-5 ml-16 mb-4 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden'><img src={randomImage}/></span>
