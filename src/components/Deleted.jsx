@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import AuthContext from '../store/authContext'
 
+import Header from './Header'
+
 const Deleted = () => {
 
   const {userId, token} = useContext(AuthContext)
@@ -33,21 +35,32 @@ const Deleted = () => {
 
   const mappedDeletedItems = getAllDeletedItems.length ? getAllDeletedItems.map(deletedItems => {
     console.log(getAllDeletedItems)
+
+
     return (
-      <div key={deletedItems.id} className='post-card'>
-          <li key={deletedItems.id}>
-          <a href={deletedItems.item_url} target="_blank" rel="noopener noreferrer">{deletedItems.item_name}</a>
-        </li>
-        <h2>
-            PICTURE:
-            <img
+        <main >
+  
+        <div className='grid grid-cols-3 ml-60 mr-60  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={deletedItems.id}>
+
+        <span className="grid ml-28 mt-10 mb-10">
+            <img 
               src={`data:image/jpeg;base64,${deletedItems.item_picture}`}
               alt="Item"
             />
-          </h2>
-        <h2>{deletedItems.item_price}</h2>
-    
-      </div>
+          </span>
+
+          <li className='grid mt-10 w-full' key={deletedItems.id}>
+
+          <a href={deletedItems.item_url}  target="_blank" rel="noopener noreferrer">{deletedItems.item_name} </a>
+        </li>
+
+          <div className="grid mt-20 ml-36">{deletedItems.item_price}</div>
+
+      
+        </div>
+        
+        
+        </main>
   
     )
   }) : <h2>DELETED ITEMS LIST</h2>
@@ -55,6 +68,7 @@ const Deleted = () => {
 
   return (
     <>
+    <Header /> 
     {[mappedDeletedItems]}
   
     </>

@@ -3,6 +3,8 @@ import axios from "axios";
 
 import AuthContext from "../store/authContext";
 
+import Header from "./Header";
+
 const Clothing = () => {
   const { userId, token } = useContext(AuthContext);
   const [getAllSavedItems, setGetAllSavedItems] = useState([]);
@@ -48,31 +50,45 @@ const Clothing = () => {
     getAllSavedItems.filter(savedItems => savedItems.category === 'Clothing').map((savedItems) => {
         console.log(getSavedItems, "get Saved items");
       
-      return (
-        <div key={savedItems.id} className="post-card">
-            <h3>Clothing, Shoes & Accessories</h3>
-          <li key={savedItems.id}>
 
-          <a href={savedItems.item_url} target="_blank" rel="noopener noreferrer">{savedItems.item_name}</a>
-        </li>
-          <h2>
-            <img
+
+
+
+      return (
+        <main >
+  
+        <div className='grid grid-cols-4 ml-16 mr-16  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
+
+        <span className="grid ml-28 mt-10 mb-10">
+            <img 
               src={`data:image/jpeg;base64,${savedItems.item_picture}`}
               alt="Item"
             />
-          </h2>
-          <h2>{savedItems.item_price}</h2>
-          <button onClick={() => moveToDeleted(savedItems.id)}>
+          </span>
+
+          <li className='grid mt-16 w-full' key={savedItems.id}>
+
+          <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer">{savedItems.item_name} </a>
+        </li>
+
+          <div className="grid mt-20 ml-36">{savedItems.item_price}</div>
+
+          
+
+          <button className='grid h-10 w-36 mt-20 ml-20 bg-limegreen shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center' onClick={() => moveToDeleted(savedItems.id)}>
             Delete Items
           </button>
         </div>
+        
+        
+        </main>
       );
     })
   ) : (
     <h2>You have no saved wishlist items</h2>
   );
 
-  return <>{[mappedSavedItems]}</>;
+  return <> <Header /> {[mappedSavedItems]}</>;
 };
 
 export default Clothing;

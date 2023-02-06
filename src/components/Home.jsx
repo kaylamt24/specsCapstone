@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../store/authContext";
 
-import avisaveVideo from "./avisaveVideo.mp4";
+import avisaveVideo from "./images/avisaveVideo.mp4";
 
 const Home = () => {
   const authCtx = useContext(AuthContext);

@@ -15,7 +15,7 @@ module.exports = {
         item_name: DataTypes.STRING,
         item_price: DataTypes.STRING,
         category: DataTypes.STRING,
-        item_picture: DataTypes.STRING(60000),
+        item_picture: DataTypes.STRING(150000),
     }),
 
     DeletedItems: sequelize.define('deleted_items', {
@@ -36,6 +36,6 @@ module.exports = {
                 key: 'id'
             }
         },
-        item_picture: DataTypes.STRING(60000),
+        item_picture: DataTypes.STRING(150000),
     })
 }

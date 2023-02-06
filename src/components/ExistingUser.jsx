@@ -5,7 +5,16 @@ import AuthContext from "../store/authContext";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+import Header from "./Header";
+
+import loginScreenOne from './images/loginScreenOne.png'
+
 const ExistingUser = () => {
+
+
+
+
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [login, setLogin] = useState(true);
@@ -37,88 +46,50 @@ const ExistingUser = () => {
   };
 
   return (
-    <main className="flex mb-40 w-full">
-      <nav>
-        {!authCtx.token ? (
-          <ul className="z-50 w-full absolute p-[20px 8%] inline-flex float-right justify-end mt-4 pr-28 font-bold text-2xl .mb-20">
-            <li class="pr-16 align-center">
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li class="pr-16">
-              <NavLink to="/existinguser">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/newuser">Sign Up</NavLink>
-            </li>
-          </ul>
-        ) : (
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/profile">Profile</NavLink>
-            </li>
-            <li>
-              <NavLink to="/beauty ">Health and Beauty</NavLink>
-            </li>
-            <li>
-              <NavLink to="/clothing ">Clothing, Shoes & Accessories</NavLink>
-              <li>
-                <NavLink to="/household ">Household Goods</NavLink>
-              </li>
-              <li>
-                <NavLink to="/electronics ">Electronics</NavLink>
-              </li>
-              <li>
-                <NavLink to="/deleted">Deleted Items</NavLink>
-              </li>
-            </li>
-            <button
-              className="logout-btn"
-              onClick={() => {
-                authCtx.logout();
-              }}
-            >
-              Logout
-            </button>
-          </ul>
-        )}
-      </nav>
+    <main className="mt-80">
+      <Header />
 
-      <form className="mt-40 border-red-900 w-96 justify-center"onSubmit={submitHandler}>
-        <header className=" inline-flex font-extrabold font-sans mb-4 border-red-700 text-2xl justify-center h-11 w-full">Log into your account!</header>
-        <div className=" flex font-bold font-serif mb-8 border-red-900 justify-center">
-          <NavLink to="/newuser">Don't have an account? Click here!</NavLink>
-        </div>
+      <div className="grid grid-cols-2 bg-eggshell h-full w-full mr-24">
+      <span className='grid mt-5 ml-16 mb-4 mr-6 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden'><img src={loginScreenOne}/></span>
+        <form onSubmit={submitHandler}>
+          <header className="font-extrabold mb-6 ml-72 text-4xl justify-center h-11 w-full mt-24 text-navy font-serif">
+            Log into your account!
+          </header>
 
-        <div className="inline-flex">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="border-4 mb-4 h-12 w-96 border-pink-900 text-2xl rounded-2xl text-center"
-          />
-        </div>
-        <input
-          // type='password'
-          type="text"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border-4 h-12 mb-4 w-96 border-purple-900 text-2xl text-center rounded-2xl"
-        />
-        <div className="flex justify-center">
+          <div className='"mt-4"'>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-80 mb-6 mt-4 ml-36 h-12 mr-6 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+            />
+            <input
+              // type='password'
+              type="text"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className=" mb-8 mt-4 h-12 w-80 mr-4 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+            />
+          </div>
+
           <button
-            className=" h-12 w-48 flex-box border-2 border-green-900 mb-4 text-2xl rounded-2xl"
+            className="h-12 w-48 ml-96 text-2xl text-center relative mx-auto rounded-lg overflow-hidden placeholder-black bg-limegreen shadow-[0px_7px_25px_navy]"
             onClick={() => setLogin(!login)}
           >
             Log In
           </button>
-        </div>
-        \
-      </form>
+
+          <div className=" font-extrabold font-sans mt-8 mb-4 text-lg justify-center h-11 ml-80 text-navy">
+            <NavLink to="/newuser">
+              Don't have an account?{" "}
+              <span className="text-limegreen underline">Click here!</span>
+            </NavLink>
+          </div>
+        </form>
+        {/* <span className='grid mt-5 ml-16 mb-4 mr-6 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden'><img src={loginScreenOne}/></span> */}
+      </div>
     </main>
   );
 };

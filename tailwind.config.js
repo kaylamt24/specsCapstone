@@ -10,7 +10,6 @@ module.exports = {
   theme: {
   extend: {
   colors: {
-  transparent: 'transparent',
   current: 'currentColor',
   hotpink: '#FF006E',
   limegreen: "#89FC00",
