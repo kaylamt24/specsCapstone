@@ -23,22 +23,22 @@ const Header = () => {
 
     <nav>
     
-      <img src={headerBanner} className=" flex absolute inset-0 w-full lg:h-80 md:h-80 sm:h-80" />
+      <img src={headerBanner} className=" flex absolute inset-0 w-full lg:h-72 md:h-80 sm:h-80" />
 
       {!authCtx.token ? (
-        <ul className="z-50 w-full absolute inline-flex float-right justify-end pt-8 pr-28 font-bold text-3xl top-0 text-eggshell hover:before:decoration-green-500">
-          <li class="pr-16 align-center">
+        <ul className="z-50 w-full absolute inline-flex float-right justify-end pt-8 pr-28 font-bold font-inter text-2xl top-0 text-eggshell hover:before:decoration-green-500">
+          <li className="pr-16 align-center hover:text-limegreen">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li class="pr-16">
+          <li className="pr-16 hover:text-limegreen">
             <NavLink to="/existinguser">Login</NavLink>
           </li>
-          <li>
+          <li className='hover:text-limegreen'>
             <NavLink to="/newuser">Sign Up</NavLink>
           </li>
         </ul>
       ) : (
-        <div className="inline-flex mt-72 h-20 w-full pt-7 bg-navy">
+        <div className="inline-flex mt-64 h-20 w-full pt-7 bg-navy">
             <ul >
               <li className="text-l py-3 inline-flex mr-10">
                 <SlDiamond size={30} className="mr-5 ml-8 text-limegreen" />

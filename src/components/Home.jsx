@@ -5,24 +5,28 @@ import AuthContext from "../store/authContext";
 
 import avisaveVideo from "./images/avisaveVideo.mp4";
 
+import homeOverlay from './images/homeOverlay.mp4'
+
 const Home = () => {
   const authCtx = useContext(AuthContext);
 
   return (
-    <div>
+    <div >
+
+      
 
       <nav>
         {!authCtx.token ? (
 
-          <ul className="z-50 w-full absolute p-[20px 8%] inline-flex float-right justify-end mt-4 pr-28 font-bold text-2xl group-hover:underline .mb-20">
+          <ul className="z-50 w-full absolute inline-flex float-right justify-end pt-8 pr-28 font-bold text-2xl font-inter top-0 text-eggshell ">
             
-            <li class="pr-16 align-center">
+            <li class="pr-16 align-center hover:text-navy">
               <NavLink to="/">Home</NavLink>
             </li>
-            <li class="pr-16">
+            <li class="pr-16 hover:text-navy">
               <NavLink to="/existinguser">Login</NavLink>
             </li>
-            <li>
+            <li class='hover:text-navy'>
               <NavLink to="/newuser">Sign Up</NavLink>
             </li>
           </ul>
@@ -59,22 +63,29 @@ const Home = () => {
             </button>
           </ul>
         )}
+        </nav>
+
+       <span className='z-50 float-right mt-72 mr-40 shadow-[0_20px_160px_rgba(118,_112,_284,_10)] relative mx-auto rounded-lg overflow-hidden'>
+        <video src={homeOverlay} autoPlay muted loop class="homeOverlay"/>
+              </span>
+
+
       <video
         src={avisaveVideo}
         autoPlay
         muted
         loop
         class="shoppingVideo"
-        className=" flexabsolute inset-0 w-full h-full object-cover bg-no-repeat"
-        
+        className="fixed inset-0 w-full h-full object-cover bg-no-repeat -z-50"
       />
+      <div className="absolute inset-0 w-full h-full z-10"></div>
+              
 
-</nav>
+             
 
-          <div class="text-3xl font-bold underline text-center">Avisave </div>
-
+          {/* // <div className="text-3xl font-bold underline text-center">Avisave </div> */}
+              </div>
     
-    </div>
   );
 };
 

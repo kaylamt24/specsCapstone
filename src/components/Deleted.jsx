@@ -40,7 +40,7 @@ const Deleted = () => {
     return (
         <main >
   
-        <div className='grid grid-cols-3 ml-60 mr-60  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={deletedItems.id}>
+        <div className='grid grid-cols-3 ml-60 mr-60 justify-center items-center mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={deletedItems.id}>
 
         <span className="grid ml-28 mt-10 mb-10">
             <img 
@@ -49,12 +49,12 @@ const Deleted = () => {
             />
           </span>
 
-          <li className='grid mt-10 w-full' key={deletedItems.id}>
+          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-blue-700' key={deletedItems.id}>
 
           <a href={deletedItems.item_url}  target="_blank" rel="noopener noreferrer">{deletedItems.item_name} </a>
         </li>
 
-          <div className="grid mt-20 ml-36">{deletedItems.item_price}</div>
+          <div className="grid justify-center items-center ml-36 font-quicksand font-bold text-xl">{deletedItems.item_price}</div>
 
       
         </div>

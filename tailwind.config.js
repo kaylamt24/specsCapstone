@@ -3,6 +3,7 @@
 
 
 
+
 module.exports = {
   content: [
   "./src/**/*.{js,jsx,ts,tsx}"
@@ -16,6 +17,10 @@ module.exports = {
   navy: '#01295F',
   eggshell: "#E6EFE9",
   customgray: '#757780'
+  }, 
+  fontFamily: {
+    inter:['Inter', "sans-serif"],
+    quicksand:['Quicksand', 'sans-serif']
   }
   }
   },

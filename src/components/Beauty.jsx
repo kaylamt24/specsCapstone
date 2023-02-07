@@ -53,7 +53,7 @@ const Beauty = () => {
       return (
         <main >
   
-        <div className='grid grid-cols-4 ml-16 mr-16  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
+        <div className='grid grid-cols-4 ml-24 mr-24  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
 
         <span className="grid ml-28 mt-10 mb-10">
             <img 
@@ -62,16 +62,16 @@ const Beauty = () => {
             />
           </span>
 
-          <li className='grid mt-10 w-full' key={savedItems.id}>
+          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-blue-700' key={savedItems.id}>
 
-          <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer">{savedItems.item_name} </a>
+          <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer hover:before:decoration-green-500">{savedItems.item_name} </a>
         </li>
 
-          <div className="grid mt-20 ml-36">{savedItems.item_price}</div>
+          <div className="grid justify-center items-center ml-36 font-quicksand font-bold text-xl">{savedItems.item_price}</div>
 
           
 
-          <button className='grid h-10 w-36 mt-16 ml-20 bg-navy text-limegreen shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center' onClick={() => moveToDeleted(savedItems.id)}>
+          <button className='grid h-10 w-36 mt-20 ml-20 justify-center text-navy shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center font-quicksand font-bold text-l' onClick={() => moveToDeleted(savedItems.id)}>
             Delete Items
           </button>
         </div>
@@ -81,7 +81,7 @@ const Beauty = () => {
       );
     })
   ) : (
-    <h2>You have no saved wishlist items</h2>
+    <span className='mt-24 ml-96 text-2xl'> </span>
   );
 
   return <> <Header/>{[mappedSavedItems]}</>;

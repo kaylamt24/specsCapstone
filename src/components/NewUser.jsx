@@ -55,9 +55,9 @@ const NewUser = () => {
     <main className="mt-80">
       <Header />
 
-      <div className="grid grid-cols-2 bg-eggshell h-full w-full mr-24">
+      <div className="grid grid-cols-2 bg-white h-full w-full mr-24">
         <form onSubmit={submitHandler}>
-          <header className="font-extrabold mb-6 ml-96 text-4xl justify-center h-11 w-full mt-24 text-navy font-serif">
+          <header className="font-extrabold mb-5 ml-96 text-4xl justify-center h-11 w-full mt-24 font-quicksand text-navy">
             Create an account!
           </header>
 
@@ -112,14 +112,14 @@ const NewUser = () => {
               Sign Up!
             </button>
           </div>
-          <div className=" font-extrabold font-sans mt-8 mb-4 text-lg justify-center h-11 ml-96 text-navy">
+          <div className=" font-bold mt-8 mb-4 text-lg justify-center h-11 ml-96 font-quicksand text-navy">
             <NavLink to="/existinguser">
               Already have an account?{" "}
-              <span className="text-limegreen underline">Click here!</span>
+              <span className="text-limegreen underline font-extrabold">Click here!</span>
             </NavLink>
           </div>
         </form>
-        <span className="grid mt-8 ml-72 mb-24 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden">
+        <span className="grid mt-8 ml-72 mb-18 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden">
           <video src={newVideo} autoPlay muted noloop class="newVideo" />
         </span>
       </div>
