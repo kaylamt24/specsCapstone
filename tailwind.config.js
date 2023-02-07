@@ -16,7 +16,8 @@ module.exports = {
   limegreen: "#89FC00",
   navy: '#01295F',
   eggshell: "#E6EFE9",
-  customgray: '#757780'
+  customgray: '#757780',
+  lightblue: '#0017E1'
   }, 
   fontFamily: {
     inter:['Inter', "sans-serif"],

@@ -4,8 +4,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "./store/authContext";
 
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
+// import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import ExistingUser from "./components/ExistingUser";
 import NewUser from "./components/NewUser";
@@ -16,12 +17,16 @@ import Beauty from "./components/Beauty";
 import Electronics from "./components/Electronics";
 import Clothing from "./components/Clothing";
 import Household from "./components/Household";
+import Miscellaneous from './components/Miscellaneous'
 
 function App() {
   const authCtx = useContext(AuthContext);
 
   return (
     <div className="App">
+
+
+
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -65,6 +70,12 @@ function App() {
           path="/household"
           element={
             authCtx.token ? <Household /> : <Navigate to="/" />
+          }
+        />
+                <Route
+          path="/miscellaneous"
+          element={
+            authCtx.token ? <Miscellaneous /> : <Navigate to="/" />
           }
         />
 

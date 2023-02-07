@@ -52,12 +52,12 @@ const NewUser = () => {
   };
 
   return (
-    <main className="mt-80">
+    <main className="mt-72  bg-slate-100 overflow-hidden">
       <Header />
 
-      <div className="grid grid-cols-2 bg-white h-full w-full mr-24">
+      <div className="grid grid-cols-2  h-full w-full mr-24">
         <form onSubmit={submitHandler}>
-          <header className="font-extrabold mb-5 ml-96 text-4xl justify-center h-11 w-full mt-24 font-quicksand text-navy">
+          <header className="font-extrabold mb-5 ml-96 text-4xl justify-center h-11 w-full mt-32 font-quicksand text-navy">
             Create an account!
           </header>
 
@@ -67,14 +67,14 @@ const NewUser = () => {
               placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-96 mb-6 mt-4 ml-32 h-12 mr-6 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className="w-96 mb-6 mt-4 ml-32 h-12 mr-6 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
             <input
               type="text"
               placeholder="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className=" mb-8 mt-4 h-12 w-96 mr-4 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className=" mb-8 mt-4 h-12 w-96 mr-4 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
           </div>
 
@@ -84,15 +84,15 @@ const NewUser = () => {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="ml-32 grid mb-4 h-12 w-96 mr-6 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className="ml-32 grid mb-4 h-12 w-96 mr-6 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
             <input
-              //   type="password"
-              type="text"
+                type="password"
+              // type="text"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="grid mb-8 h-12 w-96 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className="grid mb-8 h-12 w-96 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
           </div>
 
@@ -102,7 +102,7 @@ const NewUser = () => {
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="ml-32 mr-28 grid mb-4 h-12 w-96 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className="ml-32 mr-28 grid mb-4 h-12 w-96 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
             <button
               className="h-12 w-48 text-2xl text-center relative mx-auto rounded-lg overflow-hidden placeholder-black bg-limegreen shadow-[0px_7px_25px_navy]"
@@ -119,7 +119,7 @@ const NewUser = () => {
             </NavLink>
           </div>
         </form>
-        <span className="grid mt-8 ml-72 mb-18 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden">
+        <span className="grid mt-14 ml-72 mb-20 shadow-[0_15px_70px_navy] bg-transparent relative mx-auto rounded-lg overflow-hidden">
           <video src={newVideo} autoPlay muted noloop class="newVideo" />
         </span>
       </div>

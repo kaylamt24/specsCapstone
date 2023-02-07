@@ -5,10 +5,9 @@ import AuthContext from "../store/authContext";
 
 import { ToastContainer, toast, Flip } from "react-toastify";
 
-
 import Header from "./Header";
 
-const Household = () => {
+const Miscellaneous = () => {
   const { userId, token } = useContext(AuthContext);
   const [getAllSavedItems, setGetAllSavedItems] = useState([]);
 
@@ -51,10 +50,12 @@ const Household = () => {
   console.log(getAllSavedItems);
 
   const mappedSavedItems = getAllSavedItems.length ? (
-    getAllSavedItems.filter(savedItems => savedItems.category === 'Household').map((savedItems) => {
-        console.log(getSavedItems, "get Saved items");
+    getAllSavedItems.filter(savedItems => savedItems.category === 'Miscellaneous').map((savedItems) => {
+      console.log(getSavedItems, "get Saved items");
       
       return (
+
+        
         <main className='bg-slate-200 overflow-hidden'>
 
 <ToastContainer
@@ -70,6 +71,7 @@ const Household = () => {
   theme="dark"
   transition={Flip}
 />
+
   
         <div className='grid grid-cols-4 ml-24 mr-24  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
 
@@ -82,14 +84,14 @@ const Household = () => {
 
           <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-lightblue' key={savedItems.id}>
 
-          <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer">{savedItems.item_name} </a>
+          <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer hover:before:decoration-green-500">{savedItems.item_name} </a>
         </li>
 
           <div className="grid justify-center items-center ml-36 font-quicksand font-bold text-xl">{savedItems.item_price}</div>
 
           
 
-          <button className='grid h-10 w-36 mt-20 ml-20 justify-center text-navy  shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center font-quicksand font-bold text-l' onClick={() => moveToDeleted(savedItems.id)}>
+          <button className='grid h-10 w-36 mt-20 ml-20 justify-center text-navy shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center font-quicksand font-bold text-l' onClick={() => moveToDeleted(savedItems.id)}>
             Remove
           </button>
         </div>
@@ -102,7 +104,7 @@ const Household = () => {
     <span className='mt-24 ml-96 text-2xl'> </span>
   );
 
-  return <> <Header />  {[mappedSavedItems]}</>;
+  return <> <Header/>{[mappedSavedItems]}</>;
 };
 
-export default Household;
+export default Miscellaneous;

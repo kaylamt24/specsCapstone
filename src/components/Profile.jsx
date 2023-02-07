@@ -4,45 +4,42 @@ import { useNavigate } from "react-router-dom";
 
 import AuthContext from "../store/authContext";
 
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Header from "./Header";
 
-import imageOne from "./images/imageOne.png";
+
 import imageTwo from "./images/imageTwo.png";
 import imageThree from "./images/imageThree.png";
-import imageFour from "./images/imageFour.png";
 import imageFive from "./images/imageFive.png";
-import imageSix from "./images/imageSix.png";
 import imageEight from "./images/imageEight.png";
 import imageNine from "./images/imageNine.png";
 import imageTen from "./images/imageTen.png";
-import imageEleven from "./images/imageEleven.png";
-import imageTwelve from "./images/imageTwelve.png";
 import imageThirteen from "./images/imageThirteen.png";
 import imageFourteen from "./images/imageFourteen.png";
-import imageFifteen from "./images/imageFifteen.png";
-import imageSixteen from "./images/imageSixteen.png";
+
 
 const Profile = () => {
+
+
+
   const images = [
-    imageOne,
+    
     imageTwo,
     imageThree,
-    imageFour,
     imageFive,
-    imageSix,
     imageEight,
     imageNine,
     imageTen,
-    imageEleven,
-    imageTwelve,
     imageThirteen,
     imageFourteen,
-    imageFifteen,
-    imageSixteen,
+ 
   ];
 
   const { userId, token } = useContext(AuthContext);
   const navigate = useNavigate();
+
 
   const [item_url, setItem_Url] = useState("");
   const [item_name, setItem_Name] = useState("");
@@ -51,16 +48,19 @@ const Profile = () => {
   const [scrapeData, setScrapeData] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const category = ("Electronics", "Beauty", "Household", "Clothing");
+  const category = ("Electronics", "Beauty", "Household", "Clothing", "Miscellaneous");
   const [categories, setCategories] = useState("");
 
   const [randomImage, setRandomImage] = useState(images[0]);
   const [lastIndex, setLastIndex] = useState(-1)
+
+  
   
 
 
 
   const handleSubmit = async (e) => {
+    toast.success('We are adding this item to your list!')
     e.preventDefault();
     setLoading(true);
     try {
@@ -113,6 +113,8 @@ const Profile = () => {
             ? navigate("/clothing")
             : categories === "Household"
             ? navigate("/household")
+            : categories === "Miscellaneous"
+            ? navigate('/miscellaneous')
             : navigate("/profile");
         })
         .catch((err) => console.log(err, "error at useEffect"));
@@ -137,10 +139,25 @@ const Profile = () => {
 
   return (
     <main>
+
+  <ToastContainer
+  position="top-center"
+  autoClose={6000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+  transition={Flip}
+/>
+
       <Header />
-      <div className="grid grid-cols-2 bg-white h-full w-full mr-24 font-inter">
-        <div className="grid mt-8 ml-28 mb-4 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-white relative mx-auto rounded-lg overflow-hidden">
-          <form onSubmit={handleSubmit}>
+      <div className="grid grid-cols-2 bg-slate-100 overflow-hidden h-full w-full mr-24 font-inter">
+        <div className="grid mt-8 ml-32 mb-6 shadow-[0_15px_70px_navy] bg-white relative mx-auto rounded-lg overflow-hidden">
+          <form onSubmit={handleSubmit} >
             <input
               type="url"
               id="url"
@@ -148,8 +165,10 @@ const Profile = () => {
               placeholder="Paste it..."
               value={item_url}
               onChange={(e) => setItem_Url(e.target.value)}
-              className="grid w-96 mb-4 mt-20 ml-20 h-14 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black"
+              className="grid w-96 mb-4 mt-16 ml-20 h-14 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black"
             />
+
+
 
             <div className="flex-col text-xl justify-center mt-8 w-96 mb-24 h-12 mr-20 ml-20 rounded-xl text-center">
               <div>
@@ -178,7 +197,7 @@ const Profile = () => {
 
               <div>
                 <input
-                  className="mt-4 mb-4"
+                  className="mt-4 mb-4 "
                   type="radio"
                   value="Household"
                   checked={categories === "Household"}
@@ -197,16 +216,30 @@ const Profile = () => {
                 />
                 <label className="mr-4 ml-4">Electronics</label>
               </div>
+
+              <div>
+                <input
+                  className="mt-4 mb-12"
+                  type="radio"
+                  value="Miscellaneous"
+                  checked={categories === "Miscellaneous"}
+                  onChange={(e) => setCategories(e.target.value)}
+                />
+                <label className="mr-4 ml-4">Miscellaneous</label>
+              </div>
+
             </div>
 
-            <div className="mt-48 w-52 h-12 ml-40 shadow-[0px_7px_25px_navy] text-2xl font-inter rounded-l bg-transparent text-center items-center justify-center text-black">
+            <div className="mt-56 w-60 h-12 ml-36 shadow-[0px_7px_25px_navy] text-xl font-inter rounded-lg bg-transparent text-center items-center justify-center text-black">
               <button className="mt-2">
                 {loading ? "Loading..." : "Save it..."}
               </button>
             </div>
           </form>
         </div>
-        <span className="grid mt-8 ml-16 mb-4 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden">
+
+        
+        <span className="grid mt-8 ml-16 mb-8 shadow-[0_15px_70px_navy] bg-transparent relative mx-auto rounded-lg overflow-hidden">
           <img src={randomImage} />
         </span>
       </div>

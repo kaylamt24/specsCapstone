@@ -40,9 +40,11 @@
     "puppeteer-extra-plugin-stealth": "^2.11.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons-kit": "^2.0.0",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
     "sequelize": "^6.28.0",
     "sharp": "^0.31.3",
     "web-vitals": "^2.1.4"

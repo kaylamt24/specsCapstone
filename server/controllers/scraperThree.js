@@ -34,13 +34,15 @@ const resizedBuffer = await sharp(screenshotBuffer)
 const screenshotBase64 = Buffer.from(resizedBuffer, 'binary').toString('base64')
 
 
+
 const title = await page.evaluate(() => {
   const priceSelector1 = '#titleExpanderContent';
   const priceSelector2 = '#productTitle';
   const priceSelector3 = '#titleExpanderContent > h1';
-  const priceSelector4 = '#title'
+  const priceSelector4 = '#title';
+  const priceSelector5 = '#titleSection'
 
-  const selectedPrices = document.querySelector(priceSelector1) || document.querySelector(priceSelector2) || document.querySelector(priceSelector3) || document.querySelector(priceSelector4);
+  const selectedPrices = document.querySelector(priceSelector1) || document.querySelector(priceSelector2) || document.querySelector(priceSelector3) || document.querySelector(priceSelector4) || document.querySelector(priceSelector5);
   return selectedPrices.textContent;
 
 })

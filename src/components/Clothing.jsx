@@ -3,6 +3,9 @@ import axios from "axios";
 
 import AuthContext from "../store/authContext";
 
+import { ToastContainer, toast, Flip } from "react-toastify";
+
+
 import Header from "./Header";
 
 const Clothing = () => {
@@ -18,6 +21,7 @@ const Clothing = () => {
         },
       })
       .then((res) => {
+        toast.success('This item has been deleted!')
         console.log(res, "MOVE TO DELETED");
 
         setGetAllSavedItems(
@@ -55,9 +59,23 @@ const Clothing = () => {
 
 
       return (
-        <main >
+        <main className='bg-slate-200 overflow-hidden'>
+
+<ToastContainer
+  position="top-center"
+  autoClose={1500}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+  transition={Flip}
+/>
   
-        <div className='grid grid-cols-4 ml-16 mr-16  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
+        <div className='grid grid-cols-4 ml-24 mr-24  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
 
         <span className="grid ml-28 mt-10 mb-10">
             <img 
@@ -66,7 +84,7 @@ const Clothing = () => {
             />
           </span>
 
-          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-blue-700' key={savedItems.id}>
+          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-lightblue' key={savedItems.id}>
 
           <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer">{savedItems.item_name} </a>
         </li>
@@ -76,7 +94,7 @@ const Clothing = () => {
           
 
           <button className='grid h-10 w-36 mt-20 ml-20 justify-center text-navy  shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center font-quicksand font-bold text-l' onClick={() => moveToDeleted(savedItems.id)}>
-            Delete Items
+            Remove
           </button>
         </div>
         

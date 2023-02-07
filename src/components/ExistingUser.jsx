@@ -11,6 +11,7 @@ import mountainOne from "./images/mountainOne.png";
 import mountainTwo from "./images/mountainTwo.png";
 import mountainThree from "./images/mountainThree.png";
 import mountainFour from "./images/mountainFour.png";
+import mountainFive from './images/mountainFive.png'
 
 
 // import loginScreenOne from './images/loginScreenOne.png'
@@ -22,7 +23,7 @@ const ExistingUser = () => {
     mountainTwo,
     mountainThree,
     mountainFour,
-
+    mountainFive
   ];
 
 
@@ -74,17 +75,20 @@ const ExistingUser = () => {
   }, []);
 
   return (
-    <main className="mt-80">
+    <main className="mt-72 ">
       <Header />
 
-      <div className="grid grid-cols-2 bg-white h-full w-full mr-24">
+      <div className="grid grid-cols-2  h-full w-full mr-24 bg-slate-100 overflow-hidden">
 
         
-      <span className="grid mt-5 ml-16 mb-4 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden">
+      <span className="grid mt-11 ml-16 mb-16 shadow-[0_15px_70px_navy] bg-transparent relative mx-auto rounded-lg overflow-hidden">
           <img src={randomImage} />
         </span>
+
+
+
         <form onSubmit={submitHandler}>
-          <header className="font-extrabold mb-6 ml-72 text-4xl justify-center h-11 w-full mt-24 text-navy font-quicksand">
+          <header className="font-extrabold mb-6 ml-72 text-4xl justify-center h-11 w-full mt-40 text-navy font-quicksand">
             Log into your account!
           </header>
 
@@ -94,15 +98,15 @@ const ExistingUser = () => {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-80 mb-6 mt-4 ml-36 h-12 mr-6 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className="w-80 mb-6 mt-4 ml-36 h-12 mr-6 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
             <input
-              // type='password'
-              type="text"
+              type='password'
+              // type="text"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className=" mb-8 mt-4 h-12 w-80 mr-4 text-2xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
+              className=" mb-8 mt-4 h-12 w-80 mr-4 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black bg-white"
             />
           </div>
 
@@ -120,7 +124,6 @@ const ExistingUser = () => {
             </NavLink>
           </div>
         </form>
-        {/* <span className='grid mt-5 ml-16 mb-4 mr-6 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] bg-transparent relative mx-auto rounded-lg overflow-hidden'><img src={loginScreenOne}/></span> */}
       </div>
     </main>
   );

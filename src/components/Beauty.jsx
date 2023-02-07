@@ -3,6 +3,8 @@ import axios from "axios";
 
 import AuthContext from "../store/authContext";
 
+import { ToastContainer, toast, Flip } from "react-toastify";
+
 import Header from "./Header";
 
 const Beauty = () => {
@@ -18,6 +20,7 @@ const Beauty = () => {
         },
       })
       .then((res) => {
+        toast.success('This item has been deleted!')
         console.log(res, "MOVE TO DELETED");
 
         setGetAllSavedItems(
@@ -51,7 +54,24 @@ const Beauty = () => {
       console.log(getSavedItems, "get Saved items");
       
       return (
-        <main >
+
+        
+        <main className='bg-slate-200 overflow-hidden'>
+
+<ToastContainer
+  position="top-center"
+  autoClose={1500}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+  theme="dark"
+  transition={Flip}
+/>
+
   
         <div className='grid grid-cols-4 ml-24 mr-24  mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={savedItems.id}>
 
@@ -62,7 +82,7 @@ const Beauty = () => {
             />
           </span>
 
-          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-blue-700' key={savedItems.id}>
+          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-lightblue' key={savedItems.id}>
 
           <a href={savedItems.item_url}  target="_blank" rel="noopener noreferrer hover:before:decoration-green-500">{savedItems.item_name} </a>
         </li>
@@ -72,7 +92,7 @@ const Beauty = () => {
           
 
           <button className='grid h-10 w-36 mt-20 ml-20 justify-center text-navy shadow-[0px_7px_25px_navy] text-l rounded-l bg-transparent text-center items-center font-quicksand font-bold text-l' onClick={() => moveToDeleted(savedItems.id)}>
-            Delete Items
+            Remove
           </button>
         </div>
         

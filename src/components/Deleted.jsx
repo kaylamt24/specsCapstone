@@ -38,7 +38,7 @@ const Deleted = () => {
 
 
     return (
-        <main >
+        <main className='bg-slate-200 overflow-hidden'>
   
         <div className='grid grid-cols-3 ml-60 mr-60 justify-center items-center mt-8 mb-8 bg-white h-full text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden' key={deletedItems.id}>
 
@@ -49,7 +49,7 @@ const Deleted = () => {
             />
           </span>
 
-          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-blue-700' key={deletedItems.id}>
+          <li className='grid justify-center items-center w-full font-quicksand font-bold hover:text-lightblue' key={deletedItems.id}>
 
           <a href={deletedItems.item_url}  target="_blank" rel="noopener noreferrer">{deletedItems.item_name} </a>
         </li>
@@ -63,7 +63,7 @@ const Deleted = () => {
         </main>
   
     )
-  }) : <h2>DELETED ITEMS LIST</h2>
+  }) : <span className='mt-24 ml-96 text-2xl'> </span>
 
 
   return (

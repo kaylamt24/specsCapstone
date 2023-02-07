@@ -65,7 +65,7 @@ const Home = () => {
         )}
         </nav>
 
-       <span className='z-50 float-right mt-72 mr-40 shadow-[0_20px_160px_rgba(118,_112,_284,_10)] relative mx-auto rounded-lg overflow-hidden'>
+       <span className='z-50 float-right mt-72 mr-40 shadow-[0_15px_70px_navy] relative mx-auto rounded-lg overflow-hidden'>
         <video src={homeOverlay} autoPlay muted loop class="homeOverlay"/>
               </span>
 
@@ -83,7 +83,6 @@ const Home = () => {
 
              
 
-          {/* // <div className="text-3xl font-bold underline text-center">Avisave </div> */}
               </div>
     
   );
