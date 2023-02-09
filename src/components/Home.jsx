@@ -5,7 +5,11 @@ import AuthContext from "../store/authContext";
 
 import avisaveVideo from "./images/avisaveVideo.mp4";
 
-import homeOverlay from './images/homeOverlay.mp4'
+
+
+import homeVideo from './images/homeVideo.mp4'
+
+
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -66,7 +70,7 @@ const Home = () => {
         </nav>
 
        <span className='z-50 float-right mt-72 mr-40 shadow-[0_15px_70px_navy] relative mx-auto rounded-lg overflow-hidden'>
-        <video src={homeOverlay} autoPlay muted loop class="homeOverlay"/>
+        <video src={homeVideo} autoPlay muted loop class="newVideo"/>
               </span>
 
 

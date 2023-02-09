@@ -9,6 +9,8 @@ import Header from "./Header";
 
 import newVideo from "./images/newVideo.mp4";
 
+import newUserVideo from './images/newUserVideo.mp4'
+
 //This is set to automatically go to the profile. If there is time, change the navigate to a UX webpage welcoming them to the website.
 
 const NewUser = () => {
@@ -120,7 +122,7 @@ const NewUser = () => {
           </div>
         </form>
         <span className="grid mt-14 ml-72 mb-20 shadow-[0_15px_70px_navy] bg-transparent relative mx-auto rounded-lg overflow-hidden">
-          <video src={newVideo} autoPlay muted noloop class="newVideo" />
+          <video src={newUserVideo} autoPlay muted noloop class="newVideo" />
         </span>
       </div>
     </main>

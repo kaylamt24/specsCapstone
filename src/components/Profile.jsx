@@ -10,12 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
 
 
-import imageTwo from "./images/imageTwo.png";
 import imageThree from "./images/imageThree.png";
 import imageFive from "./images/imageFive.png";
 import imageEight from "./images/imageEight.png";
 import imageNine from "./images/imageNine.png";
-import imageTen from "./images/imageTen.png";
 import imageThirteen from "./images/imageThirteen.png";
 import imageFourteen from "./images/imageFourteen.png";
 
@@ -26,12 +24,11 @@ const Profile = () => {
 
   const images = [
     
-    imageTwo,
+
     imageThree,
     imageFive,
     imageEight,
     imageNine,
-    imageTen,
     imageThirteen,
     imageFourteen,
  
@@ -142,7 +139,7 @@ const Profile = () => {
 
   <ToastContainer
   position="top-center"
-  autoClose={6000}
+  autoClose={7000}
   hideProgressBar={false}
   newestOnTop={false}
   closeOnClick
@@ -155,7 +152,7 @@ const Profile = () => {
 />
 
       <Header />
-      <div className="grid grid-cols-2 bg-slate-100 overflow-hidden h-full w-full mr-24 font-inter">
+      <div className="grid grid-cols-2 bg-slate-100 overflow-hidden h-full w-full mr-20 font-inter">
         <div className="grid mt-8 ml-32 mb-6 shadow-[0_15px_70px_navy] bg-white relative mx-auto rounded-lg overflow-hidden">
           <form onSubmit={handleSubmit} >
             <input
@@ -165,16 +162,16 @@ const Profile = () => {
               placeholder="Paste it..."
               value={item_url}
               onChange={(e) => setItem_Url(e.target.value)}
-              className="grid w-96 mb-4 mt-16 ml-20 h-14 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black"
+              className="grid w-96 mb-4 mt-14 ml-20 h-14 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black"
             />
 
 
 
-            <div className="flex-col text-xl justify-center mt-8 w-96 mb-24 h-12 mr-20 ml-20 rounded-xl text-center">
+            <div className="flex-col text-xl  mt-8 w-96 mb-24 h-12 mr-10 ml-32 rounded-xl ">
               <div>
                 <input
-                  className="mt-8 mb-4"
-                  type="radio"
+                  className="mt-8 mb-4 accent-navy"
+                  type="checkbox"
                   value="Beauty"
                   checked={categories === "Beauty"}
                   onChange={(e) => setCategories(e.target.value)}
@@ -183,9 +180,9 @@ const Profile = () => {
               </div>
 
               <div>
-                <input
-                  className="mt-4 mb-4"
-                  type="radio"
+                <input 
+                  className="mt-4 mb-4 accent-navy"
+                  type="checkbox"
                   value="Clothing"
                   checked={categories === "Clothing"}
                   onChange={(e) => setCategories(e.target.value)}
@@ -197,8 +194,8 @@ const Profile = () => {
 
               <div>
                 <input
-                  className="mt-4 mb-4 "
-                  type="radio"
+                  className="mt-4 mb-4 accent-navy"
+                  type="checkbox"
                   value="Household"
                   checked={categories === "Household"}
                   onChange={(e) => setCategories(e.target.value)}
@@ -208,8 +205,8 @@ const Profile = () => {
 
               <div>
                 <input
-                  className="mt-4 mb-4"
-                  type="radio"
+                  className="mt-4 mb-4 accent-navy"
+                  type="checkbox"
                   value="Electronics"
                   checked={categories === "Electronics"}
                   onChange={(e) => setCategories(e.target.value)}
@@ -219,8 +216,8 @@ const Profile = () => {
 
               <div>
                 <input
-                  className="mt-4 mb-12"
-                  type="radio"
+                  className="mt-4 mb-12 accent-navy"
+                  type="checkbox"
                   value="Miscellaneous"
                   checked={categories === "Miscellaneous"}
                   onChange={(e) => setCategories(e.target.value)}
@@ -230,8 +227,8 @@ const Profile = () => {
 
             </div>
 
-            <div className="mt-56 w-60 h-12 ml-36 shadow-[0px_7px_25px_navy] text-xl font-inter rounded-lg bg-transparent text-center items-center justify-center text-black">
-              <button className="mt-2">
+            <div className="grid w-96 mb-4 mt-56 ml-20 h-14 text-xl text-center shadow-[0px_7px_25px_navy] relative mx-auto rounded-lg overflow-hidden placeholder-black">
+              <button className="mt-2 mb-2 ">
                 {loading ? "Loading..." : "Save it..."}
               </button>
             </div>

@@ -6,7 +6,6 @@ const express = require('express')
 const cors = require('cors')
 
 
-
 app = express()
 app.use(express.json())
 app.use(cors())
@@ -22,7 +21,6 @@ app.post('/register', register)
 app.post('/login', login)
 
 
-
 const {User} = require('./models/user')
 const {SavedItems, DeletedItems} = require('./models/savedItems')
 const { sequelize } = require ('./util/database')
@@ -31,6 +29,7 @@ User.hasMany(SavedItems)
 User.hasMany(DeletedItems)
 SavedItems.belongsTo(User)
 DeletedItems.belongsTo(SavedItems, {foreignKey: 'savedItemId', as: 'saved_items'})
+
 
 app.post('/savedItems', isAuthenticated, createSavedItems)
 app.get('/savedItems/:userId', isAuthenticated, retrieveSavedItems)

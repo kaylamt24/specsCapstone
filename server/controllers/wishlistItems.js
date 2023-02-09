@@ -38,6 +38,7 @@ module.exports = {
 
       const savedItems = await SavedItems.findAll({
         where: { userId: +userId },
+        order: [["createdAt", "ASC"]],
         include: [
           {
             model: User,
@@ -61,7 +62,7 @@ module.exports = {
 
       const savedItems = await SavedItems.findOne({
         where: { userId: +userId, id: +itemId },
-
+        order: [["createdAt", "ASC"]],
     
       });
 
